@@ -1,7 +1,18 @@
 {
   "name": "website",
   "version": "0.1.0",
+  "scripts": {
+    "start": "gulp",
+    "sass": "gulp sass",
+    "sass:prod": "gulp sass:production",
+    "images": "gulp images",
+    "clean": "gulp clean",
+    "build": "gulp build",
+    "build:prod": "gulp build:production"
+  },
   "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "del": "^6.1.1",
     "grunt": "~0.4.1",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-cssmin": "^1.0.1",
@@ -13,10 +24,9 @@
     "gulp-cache": "^1.1.3",
     "gulp-cssnano": "^2.1.3",
     "gulp-if": "^3.0.0",
-    "gulp-imagemin": "^9.1.0",
-    "gulp-sass": "^6.0.1",
+    "gulp-imagemin": "^6.2.0",
+    "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
-    "run-sequence": "*",
     "sass": "^1.86.3"
   }
 }

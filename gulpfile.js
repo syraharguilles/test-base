@@ -3,15 +3,17 @@
 // https://github.com/roots/sage
 // http://justinmccandless.com/post/a-tutorial-for-getting-started-with-gulp
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
-var gulpIf = require('gulp-if');
-var cssnano = require('gulp-cssnano');
-var imagemin = require('gulp-imagemin');
-var cache = require('gulp-cache');
-var runSequence = require('run-sequence');
+const gulp = require('gulp');
+const sass = require('gulp-sass')(require('sass')); // ✅ This sets the compiler
+const autoprefixer = require('gulp-autoprefixer');
+const sourcemaps = require('gulp-sourcemaps');
+const gulpIf = require('gulp-if');
+const cssnano = require('gulp-cssnano');
+const imagemin = require('gulp-imagemin');
+const cache = require('gulp-cache');
+//New
+const del = require('del');
+const browserSync = require('browser-sync').create();
 
 // Development Tasks
 // -----------------
@@ -21,21 +23,31 @@ gulp.task('sass', function() {
   return gulp.src('scss/**/*.scss') // Gets all files ending with .scss in main.css.source/styles and children dirs
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError)) // Passes it through gulp-sass and deal with errors
+    .pipe(autoprefixer({ cascade: false }))
     .pipe(sourcemaps.write('../maps'))
-    .pipe(gulp.dest('css/')); // Outputs it in the css folder
+    .pipe(gulp.dest('css/')) // Outputs it in the css folder
+    .pipe(browserSync.stream());
 })
 
 gulp.task('sass:production', function() {
   return gulp.src('scss/**/*.scss') // Gets all files ending with .scss in main.css.source/styles and children dirs
-    .pipe(sass({ outputStyle: 'compressed' })) // Passes it through a gulp-sass
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError)) // Passes it through a gulp-sass
+    .pipe(autoprefixer({ cascade: false }))
     .pipe(gulpIf('*.css', cssnano())) // Minify css
     .pipe(gulp.dest('dist/')); // Outputs it in the css folder
 })
 
-// Watchers
-gulp.task('watch', function() {
-  gulp.watch('scss/**/*.scss', ['sass']);
-})
+// Watch SCSS + HTML and reload
+gulp.task('serve', function () {
+  browserSync.init({
+    server: {
+      baseDir: './'
+    }
+  });
+
+  gulp.watch('scss/**/*.scss', gulp.series('sass'));
+  gulp.watch('./*.html').on('change', browserSync.reload);
+});
 
 // Optimization Tasks
 // ------------------
@@ -57,28 +69,23 @@ gulp.task('clear', function (done) {
   return cache.clearAll(done);
 })
 
-gulp.task('default', function(callback) {
-  runSequence(['sass', 'watch'],
-    callback
-  )
-})
 
-gulp.task('sass:only', function(callback) {
-  runSequence(['sass', 'watch'],
-    callback
-  )
-})
+// Clean dist folder
+gulp.task('clean', function () {
+  return del(['dist']);
+});
 
-gulp.task('build', function(callback) {
-  runSequence(
-    ['sass', 'images'],
-    callback
-  )
-})
 
-gulp.task('build:production', function(callback) {
-  runSequence(
-    ['sass:production'],
-    callback
-  )
-})
+// Dev: compile sass and watch
+gulp.task('default', gulp.series('sass', 'serve'));
+
+// Compile + watch only SCSS
+gulp.task('sass:only', gulp.series('sass', function watchSassOnly() {
+  gulp.watch('scss/**/*.scss', gulp.series('sass'));
+}));
+
+// Build for dev (css + images)
+gulp.task('build', gulp.series('clean', gulp.parallel('sass', 'images')));
+
+// Build for production (minified css only)
+gulp.task('build:production', gulp.series('clean', 'sass:production'));
