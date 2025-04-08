@@ -1,0 +1,51 @@
+.radio-group {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    @media(min-width: 441px) {
+        display: flex;
+	}
+}
+  
+.radio-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    position: relative;
+    gap: 10px;
+}
+  
+.radio-option input {
+    display: none;
+}
+  
+.radio-option .checkmark {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    transition: background 0.2s ease;
+}
+  
+.radio-option .checkmark i {
+    color: white;
+    display: none;
+}
+  
+.radio-option input:checked + .checkmark {
+    background-color: black;
+}
+  
+.radio-option input:checked + .checkmark i {
+    display: block;
+}
+  
+.radio-option_label {
+    user-select: none;
+}
+  

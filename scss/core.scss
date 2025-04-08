@@ -2,8 +2,8 @@
 @import "commons/colour";
 @import "commons/mixin";
 @import "commons/typography";
+@import "commons/radio-button";
 @import "commons/breakpoints";
-
 
 @import "components/base";
 @import "components/forms";
@@ -12,5 +12,6 @@
 @import "components/articles";
 @import "components/gallery";
 @import "components/main";
+@import "components/register-modal";
+@import "components/register-form";
 @import "components/custom";
-

@@ -33,17 +33,17 @@
 	<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 
-				<link type="text/css" rel="stylesheet" href="dist/bootstrap.css?v=1" />
-					<link type="text/css" rel="stylesheet" href="dist/library.css?v=1" />
-					<link type="text/css" rel="stylesheet" href="css/lib/jquery.fancybox.min.css?v=1" />
-					<link type="text/css" rel="stylesheet" href="css/core.css?v=15" />
-			
-	
-						<script type="text/javascript" src="js/lib/jquery-1.11.3.min.js"></script>
-					<script type="text/javascript" src="js/lib/jquery.flexslider-min.js"></script>
-					<script type="text/javascript" src="js/lib/jquery.fancybox.min.js"></script>
-					<script type="text/javascript" src="js/core.js?v=103"></script>
-				
+	<link type="text/css" rel="stylesheet" href="dist/vendor.css" />
+	<link type="text/css" rel="stylesheet" href="dist/core.css" />
+	<link type="text/css" rel="stylesheet" href="css/lib/jquery.fancybox.min.css?v=1" />
+
+	<script type="text/javascript" src="js/lib/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.fancybox.min.js"></script>
+	<script type="text/javascript" src="js/lib/modernizr-custom.js"></script>
+	<script type="text/javascript" src="js/lib/cleave.min.js"></script>
+	<script type="text/javascript" src="js/lib/cleave-phone.au.js"></script>
+	<script type="text/javascript" src="js/core.js?v=103"></script>
 	
 	<!--[if IE 9]>
 	<script src="js/lib/html5shiv.js"></script>
@@ -67,59 +67,62 @@
 	</style>
 	<![endif]-->
 
-<script type="text/javascript" src="js/lib/modernizr-custom.js"></script>
+	<style>
+		[name=google_conversion_frame] {
+			position: absolute;
+			bottom: 0;
+		}
+	</style>
+	
+
+	
 </head>
+
 <body class="page-home">
-
-
 <!-- <div id="wrap"> -->
 	<header id="header">
-					<a href="" id="logo"><img src="images/dendy-horizontal.svg" alt="Hendy Residences" /></a>
-
+		<a href="" id="logo"><img src="images/dendy-horizontal.svg" alt="Hendy Residences" /></a>
 		<div class="container">
 			<nav class="menu">
 				<div class="menu__inner">
-                    <a><span>BRAND NEW LUXURY BEACHSIDE PENTHOUSES</span></a>
-                    <a href="#enquire" class="menu__enquire-now  "><span>Enquire Now</span></a>
+					<a><span>BRAND NEW LUXURY BEACHSIDE PENTHOUSES</span></a>
+					<a href="#enquire" class="menu__enquire-now  "><span>Enquire Now</span></a>
 				</div>
 			</nav>
 		</div>
 
+		<a class="menu__register-now" data-fancybox  data-ratio data-src="#register-modal" href="javascript:;"><span>Register Now</span></a>
 
-		
 	</header>
 
 	<!-- <main id="main"> -->
-		<div class="header-placeholder" id="header-placeholder"></div>
+	<div class="header-placeholder" id="header-placeholder"></div>
 
-			<div class="hero-gallery hero-gallery--smaller">
-	<div class="flexslider">
-		<ul class="slides">
-			<li>
-				<div class="image-center" style="background-image: url('media/landing/landing-hero.jpg');">
-				</div>
-			</li>
-		</ul>
-	</div>
-</div>
-
-<article class="article article--odd">
-	<div class="container">
-		<div class="col-xs-60 col-sm-33 article__image__wrapper">
-
-			<a data-fancybox="" data-ratio="" href="media/landing/2d-dendy-street-brighton.mp4">
-	            <figure class="article__image image-center" style="background-image: url('media/landing/video-thumb.jpg');">
-				</figure>
-	        </a>
-
-		</div>
-		<div class="col-xs-60 col-sm-25 article__text__wrapper">
-			<div class="valign-parent"><i class="valign"></i><div class="valign">
-			<h1 class="article__heading h2"><u class="custom-underline">Architecturally designed specifically for modern living without any compromises</u></h1>
-			</div></div>
+	<div class="hero-gallery hero-gallery--smaller">
+		<div class="flexslider">
+			<ul class="slides">
+				<li>
+					<div class="image-center" style="background-image: url('media/landing/landing-hero.jpg');"></div>
+				</li>
+			</ul>
 		</div>
 	</div>
-</article>
+
+	<article class="article article--odd">
+		<div class="container">
+			<div class="col-xs-60 col-sm-33 article__image__wrapper">
+				<a data-fancybox="" data-ratio="" href="media/landing/2d-dendy-street-brighton.mp4">
+					<figure class="article__image image-center" style="background-image: url('media/landing/video-thumb.jpg');"></figure>
+				</a>
+
+			</div>
+			<div class="col-xs-60 col-sm-25 article__text__wrapper">
+				<div class="valign-parent"><i class="valign"></i><div class="valign">
+				<h1 class="article__heading h2"><u class="custom-underline">Architecturally designed specifically for modern living without any compromises</u></h1>
+				</div></div>
+			</div>
+		</div>
+	</article>
 
 <div class="hero-gallery">
 	
@@ -269,24 +272,110 @@
 	</p>
 </div>
 
-	<style>
-	[name=google_conversion_frame] {
-	    position: absolute;
-	    bottom: 0;
-	}
-	</style>
+	<!-- Modal Structure -->
+	<div style="display: none;" id="register-modal">
+		<form action="" method="POST" id="register-modal-form">
+			<div class="form-container">
+				<h2 class="title register-now">Register Now</h2>
+				<div class="row">
+					<input type="text" name="name" value="" placeholder="NAME *" title="Name*" required="required" />
+				</div>
+				<div class="row">
+					<input type="email" name="email" value="" placeholder="EMAIL *" title="Email*" required="required" />
+				</div>
+				<div class="row">
+					<input type="tel" class="phone-input" placeholder="PHONE" name="phone" pattern="^(04\d{2} \d{3} \d{3}|0[2378] \d{4} \d{4})$">
+					<small style="display:block; margin-top:4px; color:#666; font-size:0.9em;">
+						Mobile or landline numbers accepted (e.g. 0412 345 678 or 03 9123 4567)
+					</small>
+				</div>
 
-<script>
+				<!-- Hidden Radio Section -->
+				<div class="radio-group" id="radio-group" style="display: none;">
+					<label class="radio-option">
+						<input type="radio" name="time	" value="morning" />
+						<span class="checkmark"><i class="fa fa-check"></i></span>
+						<span class="radio-option_label">Morning</span>
+					</label>
+				
+					<label class="radio-option">
+						<input type="radio" name="time" value="midday" />
+						<span class="checkmark"><i class="fa fa-check"></i></span>
+						<span class="radio-option_label">Midday</span>
+					</label>
+				
+					<label class="radio-option">
+						<input type="radio" name="time" value="afternoon" />
+						<span class="checkmark"><i class="fa fa-check"></i></span>
+						<span class="radio-option_label">Afternoon</span>
+					</label>
 
-    $(window).ready(function(){
-        $(".menu__enquire-now").click(function() {
-            $([document.documentElement, document.body]).animate({
-                scrollTop: $("#enquire").offset().top -100
-            }, 500);
-        });
-    })
+					<label class="radio-option">
+						<input type="radio" name="time" value="evening" />
+						<span class="checkmark"><i class="fa fa-check"></i></span>
+						<span class="radio-option_label">Evening</span>
+					</label>
+				</div>
+				
+				<div class="row">
+					<button class="button">Submit</button>
+				</div>
+			</div>		
 
-</script>
+			<h2 class="title thank-you">Thank You</h2>
+		</form>
+	</div>
+	
+	<script>
+		$(document).ready(function(){
+			$(".menu__enquire-now").click(function() {
+				$([document.documentElement, document.body]).animate({
+					scrollTop: $("#enquire").offset().top -100
+				}, 500);
+			});
+
+			var cleave = new Cleave('.phone-input', {
+				phone: true,
+				phoneRegionCode: 'au',
+			})
+
+			$('.phone-input').on('input', function () {
+				const phoneValue = $(this).val();
+
+				// Match format: 0412 345 678 or 03 9123 4567
+				const pattern = /^(04\d{2} \d{3} \d{3}|0[2378] \d{4} \d{4})$/;
+
+				if (pattern.test(phoneValue)) {
+					$('#radio-group').slideDown();
+				} else {
+					$('#radio-group').slideUp();
+				}
+			});
+
+			const registerForm = document.getElementById('register-modal-form');
+			const registerFormContainer = registerForm.querySelector('.form-container');
+			const registerThankYou = registerForm.querySelector('.thank-you');
+			const registerClose = registerForm.querySelector('.fancybox-close-small');
+
+			if (registerForm) {
+				registerForm.addEventListener('submit', function (event) {
+					event.preventDefault();
+					
+					if (registerFormContainer) {
+						registerFormContainer.style.display = 'none';
+					}
+					
+					if (registerThankYou) {
+						registerThankYou.style.display = 'block';
+					}
+					
+					registerForm.classList.add('submitted');
+					registerForm.reset();
+				});
+			}
+		})
+
+	</script>
 
 </body>
 </html>

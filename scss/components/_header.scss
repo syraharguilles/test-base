@@ -434,5 +434,42 @@
 		-ms-transition: transform 0.3s ease 0s, opacity 0.3s ease 0.1s, visibility 0s ease 0.4s;
 		transition: transform 0.3s ease 0s, opacity 0.3s ease 0.1s, visibility 0s ease 0.4s;
 	}
+}
 
+#header .menu__register-now {
+	background-color: #000000;
+    color: #ffffff;
+    padding: .75em 1.5em;
+    position: absolute;
+    top: 5px;
+    right: 5px;	
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 0.875em;
+
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: none;
+	}
+
+	&:hover {
+		background-color: #222222;
+	}
+
+	@media(min-width: 768px) {
+		top: 8px;
+    	right: 10px;
+	}
+
+	@media(min-width: 990px) {
+		top: 6px;
+    	right: 10px;
+	}
+
+	@media(min-width: 1200px) {
+		top: 20px;
+    	right: 20px;
+	}
 }
