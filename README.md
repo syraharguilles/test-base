@@ -1,4 +1,4 @@
-# **Process on how to compile css**
+# **Process on how to compile scss**
 
 1. Move the files inside the assets directory to root directory
 2. Upgrade the gulp version from 3.9.1 to 4.0.2 to be able to use the latest feature of gulp like gulp-series, gulp-parallel
