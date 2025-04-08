@@ -2210,6 +2210,10 @@ label.required:after {
 #register-modal .thank-you {
   display: none;
 }
+#register-modal .fancybox-close-small {
+  background-color: transparent;
+  color: #323232;
+}
 
 #register-modal-form {
   width: 100%;
@@ -2249,20 +2253,6 @@ label.required:after {
   #register-modal-form button {
     width: 665px;
   }
-}
-#register-modal-form .messageContainer {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 100%;
-  height: 280px;
-  text-align: center;
-  font-size: 36px;
-  text-transform: uppercase;
-  font-weight: 700;
 }
 
 .page-home .hero-gallery--full-height .slide-logo {
